@@ -1,20 +1,27 @@
 
-
+pizero();
 
 $fn=100;
 
 r=3;
+m=3;
 
-difference() {
-  hull() {
-    circle(r);
-    translate([23,0]) circle(r);
-    translate([23,58]) circle(r);
-    translate([0,58]) circle(r);
+v= [ [0,0], [23,0],[0,58],[23,58] ];
+
+module respeaker() {
+  difference() {
+    pizero();
+    translate([9,13]) circle(8); 
+    translate([3,-4]) square([5,5]);
+    translate([3,57]) square([5,5]);
   }
-translate([1,1]) circle(1.3);
-translate([22,1]) circle(1.3);
-translate([22,57]) circle(1.3);
-translate([1,57]) circle(1.3);
+}
 
+module pizero() {
+  difference() {
+    hull() {
+      for (i=v) translate(i) circle(6);
+    }
+    for (i=v) translate(i) circle(1.3);
+  }
 }
